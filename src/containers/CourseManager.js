@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CourseCard from '../components/CourseCard';
 import CourseEditor from './CourseEditor'
+import CourseList from './CourseList'
 
 
 
@@ -13,7 +14,7 @@ export default class CourseManager
         return (
             <div className="container-fluid">
                  <h1>Course Manager</h1>
-                <CourseEditor/>
+                <CourseList/>
                 <div className="card-deck">
 
                     <CourseCard/>
