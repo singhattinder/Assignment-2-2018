@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import CourseCard from '../components/CourseCard';
 import CourseEditor from './CourseEditor'
 import CourseList from './CourseList'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import LessonTabs from "./LessonTabs";
+import ModuleList from "./ModuleList";
 
 
 
@@ -12,20 +15,22 @@ export default class CourseManager
     render(){
 
         return (
+            <Router>
             <div className="container-fluid">
                  <h1>Course Manager</h1>
-                <CourseList/>
-                <div className="card-deck">
 
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
+                <Route path="/courses"
+                       component={CourseList}/>
+
+                <Route/>
+                <Route path="/course/:courseId"
+                       component={CourseEditor}>
+                </Route>
 
 
-                </div>
 
             </div>
+            </Router>
 
         )
 

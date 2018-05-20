@@ -9,7 +9,7 @@ class CourseList extends React.Component {
         this.courseService = CourseService.instance;
         this.createCourse = this.createCourse.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
-       // this.findAllCourses = this.findAllCourses.bind(this);
+        this.findAllCourses = this.findAllCourses.bind(this);
 
     }
 
