@@ -26,7 +26,7 @@ class CourseList extends React.Component {
               courses = this.state.courses.map(
 
                     function (course) {
-                        return <CourseRow/>
+                        return <CourseRow key={course.id} course={course}/>
                     }
                 );
 
