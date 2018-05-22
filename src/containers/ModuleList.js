@@ -1,11 +1,19 @@
 import React from 'react';
 import ModuleListItem from '../components/ModuleListItem';
+import ModuleService from '../services/ModuleService';
 
 
 class ModuleList extends React.Component{
 
     constructor(props) {
         super(props);
+
+        this.deleteModule = this.deleteModule.bind(this);
+        this.titleChanged = this.titleChanged.bind(this);
+        this.createModule = this.createModule.bind(this);
+        this.setCourseId = this.setCourseId.bind(this);
+        this.moduleService = ModuleService.instance;
+
 
         this.state = {courseId: '',
             module: {title: ''},
@@ -18,19 +26,28 @@ class ModuleList extends React.Component{
                 {title: 'Module 6 - MongoDB', id: 678},]
         };
 
-        this.titleChanged = this.titleChanged.bind(this);
-        this.createModule = this.createModule.bind(this);
-        this.setCourseId = this.setCourseId.bind(this);
+
 
 
     }
-
     setCourseId(courseId){
 
         this.setState({courseId:courseId})
 
 
     }
+
+    findAllModulesForCourse(courseId) {
+        this.moduleService
+            .findAllModulesForCourse(courseId)
+            .then((modules) => {this.setModules(modules)});
+    }
+
+
+    setModules(modules) {
+        this.setState({modules: modules})
+    }
+
 
     componentDidMount(){
 
@@ -40,17 +57,11 @@ class ModuleList extends React.Component{
     componentWillReceiveProps(newProps){
 
         this.setCourseId(newProps.courseId);
+        this.findAllModulesForCourse(newProps.courseId)
     }
 
 
-    renderListOfModules() {
-        let modules =   this.state.modules.map(function (module) {
-            return <ModuleListItem key={module.id} title={module.title}/>
-        });
 
-
-        return modules;
-    }
 
     titleChanged(event){
         console.log(event.target.value);
@@ -61,11 +72,37 @@ class ModuleList extends React.Component{
 
     createModule(){
 
-        console.log(this.state.module);
+        this.moduleService.createModule(this.state.courseId,this.state.module)
 
 
 
     }
+
+    deleteModule(moduleId) {
+        this.moduleService
+            .deleteModule(moduleId)
+            .then(() => {
+                this.findAllModulesForCourse
+                (this.state.courseId)
+            });
+    }
+
+
+
+
+
+
+    renderModules() {
+        let modules =
+            this.state.modules.map(function (module) {
+                return <ModuleListItem key={module.id}
+                                       module={module}
+                                      // delete={this.deleteModule}
+                />
+            });
+        return modules;
+    }
+
 
 
     render(){
@@ -88,7 +125,7 @@ class ModuleList extends React.Component{
                 </button>
                 <ul className="list-group">
 
-                    {this.renderListOfModules()}
+                    {this.renderModules()}
 
                 </ul>
             </div>

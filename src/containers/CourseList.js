@@ -10,6 +10,7 @@ class CourseList extends React.Component {
         this.createCourse = this.createCourse.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
         this.findAllCourses = this.findAllCourses.bind(this);
+        this.deleteCourse = this.deleteCourse.bind(this);
 
     }
 
@@ -29,7 +30,9 @@ class CourseList extends React.Component {
     }
 
 
-    renderCourseRows(){
+
+
+    courseRows(){
 
         let courses =null;
 
@@ -37,17 +40,18 @@ class CourseList extends React.Component {
 
               courses = this.state.courses.map(
 
-                    function (course) {
+                     (course) => {
 
-                        return <CourseRow key={course.id} course={course}/>
+                        return <CourseRow key={course.id}
+                                          course={course}
+                                          delete={this.deleteCourse}
+
+                        />
                     }
                 );
 
-
             }
             console.log(this.state);
-
-
 
         return (
             courses
@@ -74,19 +78,33 @@ class CourseList extends React.Component {
 
 
     }
+    deleteCourse(courseId) {
+        this.courseService
+            .deleteCourse(courseId)
+            .then(()=>{this.findAllCourses()});
+
+    }
+
 
 
     render() {
         return (
             <div>
-            <h2>Course List</h2>
+             <h1>Course Manager</h1>
+            <h3>Course List</h3>
         <table className="table">
             <thead>
 
-            <tr><th>Title</th></tr>
+            <tr>
+
+                <th>Title</th>
+                <th>Owned by</th>
+                <th>Last Modified</th>
+
+            </tr>
             <tr>
                 <th><input className="form-control" id="titleFld"
-                           placeholder="cs101"
+                           placeholder="CS5600"
                            onChange={this.titleChanged}/></th>
 
                 <th><button className="btn btn-primary"
@@ -95,7 +113,7 @@ class CourseList extends React.Component {
 
             </thead>
             <tbody>
-            {this.renderCourseRows()}
+            {this.courseRows()}
            </tbody>
         </table>
         </div>

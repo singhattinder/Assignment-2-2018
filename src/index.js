@@ -7,7 +7,6 @@ import  Hello from './components/Hello';
 import Stateless from './components/Stateless';
 import ModuleList from "./containers/ModuleList";
 import ModuleListItem from "./components/ModuleListItem";
-import ModuleList2 from "./containers/ModuleList2";
 import App from './examples/App';
 
 
