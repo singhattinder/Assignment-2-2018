@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom';
 import CourseManager from './containers/CourseManager';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.css';
-import  Hello from './components/Hello';
-import Stateless from './components/Stateless';
-import ModuleList from "./containers/ModuleList";
-import ModuleListItem from "./components/ModuleListItem";
-import App from './examples/App';
+
 
 
 
