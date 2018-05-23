@@ -17,22 +17,20 @@ export default class ModuleListItem extends React.Component{
     render(){
 
         return(
-            <Router>
+            <div>
 
             <li className="list-group-item">
                 <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
                     {this.props.module.title}
                     </Link>
 
-                <span className="float-right">
-                    <button className="btn btn-danger" onClick={() =>
-                    {this.props.delete(this.props.module.id)}}>
-                        Delete
-                    </button>
+                <span className="float-right" onClick={() =>
+                {this.props.delete(this.props.module.id)}}>
+                    <i className="fa fa-times-circle" aria-hidden="true"></i>
 
                 </span>
             </li>
-            </Router>
+            </div>
         );
     }
 

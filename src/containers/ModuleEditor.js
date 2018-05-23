@@ -18,6 +18,7 @@ class ModuleEditor extends React.Component{
 
         this.findAllLessonsForModule = this.findAllLessonsForModule.bind(this);
         this.deleteLesson = this.deleteLesson.bind(this);
+        this.createLesson = this.createLesson.bind(this);
 
 
         this.lessonService = LessonService.instance;
@@ -26,7 +27,7 @@ class ModuleEditor extends React.Component{
         this.state = {
             moduleId: '',
             courseId: '',
-            lesson: {title: ''},
+            lesson: {title: 'New Lesson'},
             lessons: [
 
             ]
@@ -82,6 +83,15 @@ class ModuleEditor extends React.Component{
 
     }
 
+    createLesson(){
+
+        this.lessonService
+            .createLesson(this.state.moduleId, this.state.lesson)
+            .then(() => { this.findAllLessonsForModule(this.state.moduleId, this.state.courseId); });
+
+    }
+
+
 
 
     lessonTabs(){
@@ -113,6 +123,13 @@ class ModuleEditor extends React.Component{
                     <div className="col-8">
                         <ul className="nav nav-tabs">
                             {this.lessonTabs()}
+                            <li className="nav-item" onClick={this.createLesson}>
+                                <a className="nav-link active">
+                                    +
+                                </a>'
+                            </li>
+
+
                         </ul>
                     </div>
                 </div>

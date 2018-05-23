@@ -21,6 +21,10 @@ export default class CourseManager
                        component={CourseList}/>
 
                 <Route/>
+                <Route exact={true} path="/"
+                       component={CourseList}/>
+
+                <Route/>
                 <Route exact={true} path="/course/:courseId"
                        component={CourseEditor}>
 

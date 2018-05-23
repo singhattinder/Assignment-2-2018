@@ -22,11 +22,9 @@ class Tabs extends React.Component {
                     <a className="nav-link active">
                         {this.props.lesson.title}
                         </a>'
-                    <span className="float-right">
-                    <button onClick={() =>
+                    <span className="float-right" onClick={() =>
                     {this.props.delete(this.props.lesson.id)}}>
-                        Delete
-                    </button>
+                    <i className="fa fa-times" aria-hidden="true"></i>
                         </span>
                 </li>
             </div>

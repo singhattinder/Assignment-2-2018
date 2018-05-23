@@ -26,11 +26,9 @@ class CourseRow extends React.Component {
 
                 </span>
 
-                <span className="float-right">
-                    <button onClick={() =>
-                    {this.props.delete(this.props.course.id)}}>
-                        Delete
-                    </button>
+                <span className="float-right" onClick={() =>
+                {this.props.delete(this.props.course.id)}}>
+                    <i className="fa fa-times-circle" aria-hidden="true"></i>
 
                 </span>
             </td></tr>
