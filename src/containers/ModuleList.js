@@ -18,12 +18,7 @@ class ModuleList extends React.Component{
         this.state = {courseId: '',
             module: {title: ''},
             modules: [
-                {title: 'Module 1 - jQuery', id: 123},
-                {title: 'Module 2 - React', id: 234},
-                {title: 'Module 3 - Redux', id: 345},
-                {title: 'Module 4 - Angular', id: 456},
-                {title: 'Module 5 - Node.js', id: 567},
-                {title: 'Module 6 - MongoDB', id: 678},]
+                ]
         };
 
 
@@ -77,8 +72,6 @@ class ModuleList extends React.Component{
                 this.findAllModulesForCourse(this.state.courseId);
             });
 
-
-
     }
 
     deleteModule(moduleId) {
@@ -96,14 +89,15 @@ class ModuleList extends React.Component{
 
 
     renderModules() {
-        let modules =
-            this.state.modules.map(function (module) {
+        let modu =
+            this.state.modules.map( (module) =>{
                 return <ModuleListItem key={module.id}
                                        module={module}
-                                      // delete={this.deleteModule}
+                                       courseId={this.state.courseId}
+                                       delete={this.deleteModule}
                 />
             });
-        return modules;
+        return modu;
     }
 
 

@@ -86,6 +86,7 @@ class CourseList extends React.Component {
 
 
 
+
     render() {
         return (
             <div>
@@ -116,9 +117,9 @@ class CourseList extends React.Component {
 
             </thead>
             <tbody>
-            <th>
+
             {this.courseRows()}
-            </th>
+
            </tbody>
         </table>
                 </div>

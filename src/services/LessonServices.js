@@ -1,7 +1,9 @@
 let _singleton = Symbol();
 
-const COURSE_API_URL =
+const MODULE_API_URL =
     'http://localhost:8080/api/course/CID/module/MID/lesson';
+const LESSON_DELETE_API_URL=
+    'http://localhost:8080/api/lesson/LID';
 
 
 
@@ -25,19 +27,20 @@ class CourseService {
         { return response.json(); })
     }
 
-    findAllLessonsForModule(courseId) {
+    findAllLessonsForModule(moduleId, courseId) {
         return fetch(
             MODULE_API_URL
-                .replace('CID', courseId))
+                .replace('CID', courseId)
+                .replace('MID', moduleId))
             .then(function (response) {
                 return response.json();
             })
     }
 
 
-    deleteModule(moduleId) {
-        return fetch(MODULE_API_URL.replace
-        ('MID', moduleId), {
+    deleteLesson(lessonId) {
+        return fetch(LESSON_DELETE_API_URL.replace
+        ('LID', lessonId), {
             method: 'delete'
         })
     }

@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import CourseCard from '../components/CourseCard';
 import CourseEditor from './CourseEditor'
 import CourseList from './CourseList'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import LessonTabs from "./LessonTabs";
-import ModuleList from "./ModuleList";
+
+import ModuleEditor from "./ModuleEditor";
 
 
 
@@ -18,14 +17,16 @@ export default class CourseManager
             <Router>
             <div className="container-fluid">
 
-                <Route path="/courses"
+                <Route exact={true} path="/course"
                        component={CourseList}/>
 
                 <Route/>
-                <Route path="/course/:courseId"
+                <Route exact={true} path="/course/:courseId"
                        component={CourseEditor}>
-                </Route>
 
+                </Route>
+                <Route path="/course/:courseId/module/:moduleId"
+                       component={ModuleEditor}/>
 
 
             </div>

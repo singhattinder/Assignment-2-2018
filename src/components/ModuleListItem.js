@@ -1,4 +1,7 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Link}
+    from 'react-router-dom'
+import ModuleEditor from "../containers/ModuleEditor";
 
 
 
@@ -7,8 +10,6 @@ export default class ModuleListItem extends React.Component{
     constructor(props){
         super(props);
 
-        //this.delete = this.delete.bind(this);
-        this.deleteModule = this.deleteModule(this);
 
     }
 
@@ -16,26 +17,26 @@ export default class ModuleListItem extends React.Component{
     render(){
 
         return(
+            <Router>
 
             <li className="list-group-item">
-                {this.props.module.title}
-                <span className="float-right" >
+                <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
+                    {this.props.module.title}
+                    </Link>
 
-                       <i className="fa fa-pencil"></i>
-
-
-                    <i className="fa fa-trash-o" aria-hidden="true" ></i>
-
+                <span className="float-right">
+                    <button className="btn btn-danger" onClick={() =>
+                    {this.props.delete(this.props.module.id)}}>
+                        Delete
+                    </button>
 
                 </span>
             </li>
+            </Router>
         );
     }
 
-    deleteModule(){
 
-        console.log("yoyo");
-    }
 
 
 
