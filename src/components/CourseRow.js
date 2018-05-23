@@ -7,8 +7,6 @@ class CourseRow extends React.Component {
 
     constructor(props){
         super(props);
-
-        //this.deleteCourse = this.deleteCourse.bind(this);
         this.timeFormatting = this.timeFormatting.bind(this);
 
 
@@ -17,7 +15,7 @@ class CourseRow extends React.Component {
 
     render() {
         return (
-            <tr><td>
+            <tr><td scope="row">
 
                 <Link to={`/course/${this.props.course.id}`}>
                     {this.props.course.title}

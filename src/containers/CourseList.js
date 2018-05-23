@@ -76,7 +76,6 @@ class CourseList extends React.Component {
             .createCourse(this.state.course)
             .then(() => { this.findAllCourses(); });
 
-
     }
     deleteCourse(courseId) {
         this.courseService
@@ -92,30 +91,37 @@ class CourseList extends React.Component {
             <div>
              <h1>Course Manager</h1>
             <h3>Course List</h3>
+                <div className="table-responsive">
+
         <table className="table">
-            <thead>
+            <thead className="thead-dark">
 
-            <tr>
-
-                <th>Title</th>
-                <th>Owned by</th>
-                <th>Last Modified</th>
-
-            </tr>
             <tr>
                 <th><input className="form-control" id="titleFld"
                            placeholder="CS5600"
                            onChange={this.titleChanged}/></th>
 
-                <th><button className="btn btn-primary"
+                <th ><button className="btn btn-primary"
                              onClick={this.createCourse}>Add</button></th>
+            </tr>
+
+            <tr>
+
+                <th scope="col">Title</th>
+                <th scope="col">Owned by</th>
+                <th scope="col">Last Modified</th>
+
+
             </tr>
 
             </thead>
             <tbody>
+            <th>
             {this.courseRows()}
+            </th>
            </tbody>
         </table>
+                </div>
         </div>
 
 
