@@ -23,7 +23,6 @@ class CourseList extends React.Component {
 
     findAllCourses(){
         this.courseService.findAllCourses().then((courses)=>{
-            //console.log(courses);
             this.setState({courses:courses});
         })
 
@@ -51,7 +50,6 @@ class CourseList extends React.Component {
                 );
 
             }
-            console.log(this.state);
 
         return (
             courses

@@ -26,8 +26,8 @@ class CourseRow extends React.Component {
 
                 </span>
 
-                <span className="float-right" onClick={() =>
-                {this.props.delete(this.props.course.id)}}>
+                <span className="float-right"
+                      onClick={() => {if(window.confirm('Delete the Course?')) {this.props.delete(this.props.course.id)};}}>
                     <i className="fa fa-times-circle" aria-hidden="true"></i>
 
                 </span>
@@ -47,5 +47,7 @@ class CourseRow extends React.Component {
 
 
     }
+
+
 }
 export default CourseRow;

@@ -24,8 +24,8 @@ export default class ModuleListItem extends React.Component{
                     {this.props.module.title}
                     </Link>
 
-                <span className="float-right" onClick={() =>
-                {this.props.delete(this.props.module.id)}}>
+                <span className="float-right"
+                      onClick={() => {if(window.confirm('Delete the Module?')) {this.props.delete(this.props.module.id)};}}>
                     <i className="fa fa-times-circle" aria-hidden="true"></i>
 
                 </span>
@@ -33,8 +33,6 @@ export default class ModuleListItem extends React.Component{
             </div>
         );
     }
-
-
 
 
 

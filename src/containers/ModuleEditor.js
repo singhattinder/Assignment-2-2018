@@ -94,6 +94,7 @@ class ModuleEditor extends React.Component{
 
 
 
+
     lessonTabs(){
 
         let less = this.state.lessons.map(
