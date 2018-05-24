@@ -60,21 +60,20 @@ class ModuleEditor extends React.Component{
 
     }
 
-    setCourseTitle(courseId){
-
-        var t = "course"
+    async setCourseTitle(courseId){
 
 
-        let title = Promise.resolve(this.courseService.findCoursesById(courseId))
+
+        let title = await Promise.resolve(this.courseService.findCoursesById(courseId))
             .then(function(response){
-                 t = response.title;
+                 return response.title;
 
             });
 
 
+        console.log(title);
 
-        this.setState({courseTitle: t}
-        );
+    this.setState({courseTitle: title });
 
     }
 
@@ -144,16 +143,18 @@ class ModuleEditor extends React.Component{
                 <h2>Editing course:{this.state.courseTitle}</h2>
 
                 <div className="row">
-                    <div className="col-4">
+                    <div className="col-4" style={{backgroundColor: "#F5F5F5"}}>
                         <ModuleList courseId={this.state.courseId}/>
                     </div>
+
                     <div className="col-8">
+
                         <ul className="nav nav-tabs">
                             {this.lessonTabs()}
                             <li className="nav-item" onClick={this.createLesson}>
                                 <a className="nav-link active">
                                     +
-                                </a>'
+                                </a>
                             </li>
 
 

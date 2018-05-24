@@ -106,10 +106,10 @@ class ModuleList extends React.Component{
 
         return(
             <div>
-                <h3>Module List for Course:{this.state.courseId}</h3>
+                <h3>Module List</h3>
 
                 <br/>
-                <input className="form-control" placeholder="title"
+                <input className="form-control" placeholder="Add Course"
 
                        onChange={this.titleChanged}
 

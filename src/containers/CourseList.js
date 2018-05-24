@@ -88,27 +88,35 @@ class CourseList extends React.Component {
     render() {
         return (
             <div>
-             <h1>Course Manager</h1>
-            <h3>Course List</h3>
+                <nav className="navbar navbar-default">
+                    <div className="container-fluid">
+                        <div className="navbar-header">
+                            <a className="navbar-brand">
+                                <img alt="Courses " class="img-responsive" src="https://thumbs.dreamstime.com/s/letter-tg-logo-icon-design-initial-t-g-template-94304958.jpg"/>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
                 <div className="table-responsive">
 
         <table className="table">
-            <thead className="thead-dark">
+            <thead>
 
             <tr>
                 <th><input className="form-control" id="titleFld"
                            placeholder="CS5600"
                            onChange={this.titleChanged}/></th>
 
-                <th ><button className="btn btn-primary"
+
+                <th><button className="btn btn-primary"
                              onClick={this.createCourse}>Add</button></th>
-            </tr>
+</tr>
 
             <tr>
 
                 <th scope="col">Title</th>
-                <th scope="col">Owned by</th>
                 <th scope="col">Last Modified</th>
+                <th scope="col"></th>
 
 
             </tr>

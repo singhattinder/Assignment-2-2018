@@ -15,23 +15,26 @@ class CourseRow extends React.Component {
 
     render() {
         return (
-            <tr><td scope="row">
-
+            <tr>
+                <td>
                 <Link to={`/course/${this.props.course.id}`}>
                     {this.props.course.title}
                 </Link>
+                </td>
+                <td>
                 <span >
 
                     <ins>{this.timeFormatting(this.props.course.created)}</ins>
 
                 </span>
+                </td>
 
                 <span className="float-right"
                       onClick={() => {if(window.confirm('Delete the Course?')) {this.props.delete(this.props.course.id)};}}>
                     <i className="fa fa-times-circle" aria-hidden="true"></i>
 
                 </span>
-            </td></tr>
+            </tr>
         )
     }
 
