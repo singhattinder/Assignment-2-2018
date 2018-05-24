@@ -97,7 +97,7 @@ class CourseList extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <div className="table-responsive">
+                <div className="table-responsive-lg">
 
         <table className="table">
             <thead>

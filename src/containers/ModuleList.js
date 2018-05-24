@@ -1,6 +1,7 @@
 import React from 'react';
 import ModuleListItem from '../components/ModuleListItem';
 import ModuleService from '../services/ModuleService';
+import CourseService from "../services/CourseServices";
 
 
 class ModuleList extends React.Component{
@@ -13,10 +14,12 @@ class ModuleList extends React.Component{
         this.createModule = this.createModule.bind(this);
         this.setCourseId = this.setCourseId.bind(this);
         this.moduleService = ModuleService.instance;
+        this.courseService = CourseService.instance;
 
 
         this.state = {courseId: '',
             module: {title: ''},
+            date:'',
             modules: [
                 ]
         };
@@ -106,10 +109,12 @@ class ModuleList extends React.Component{
 
         return(
             <div>
+                <div class="container-fluid">
                 <h3>Module List</h3>
+                </div>
 
                 <br/>
-                <input className="form-control" placeholder="Add Course"
+                <input className="form-control" placeholder="Add Module"
 
                        onChange={this.titleChanged}
 

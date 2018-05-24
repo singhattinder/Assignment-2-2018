@@ -3,6 +3,11 @@ let _singleton = Symbol();
 const COURSE_API_URL =
     'http://localhost:8080/api/course';
 
+const COURSE_API_URL_HEROKU =
+    'https://webdev-attinder-summer1-2018.herokuapp.com/api/course';
+
+
+
 
 
 class CourseService {
@@ -17,21 +22,21 @@ class CourseService {
     }
 
     findAllCourses() {
-        return fetch(COURSE_API_URL)
+        return fetch(COURSE_API_URL_HEROKU)
             .then(function(response){
                 return response.json();
             });
     }
 
     findCoursesById(courseId) {
-        return fetch(COURSE_API_URL + '/' + courseId)
+        return fetch(COURSE_API_URL_HEROKU + '/' + courseId)
             .then(function(response){
                 return response.json();
             });
     }
 
     createCourse(course) {
-        return fetch(COURSE_API_URL, {
+        return fetch(COURSE_API_URL_HEROKU, {
             body: JSON.stringify(course),
             headers: {
                 'Content-Type': 'application/json'
@@ -42,13 +47,14 @@ class CourseService {
         })}
 
     deleteCourse(courseId) {
-        return fetch(COURSE_API_URL + '/' + courseId,
+        return fetch(COURSE_API_URL_HEROKU + '/' + courseId,
             {
                 method: 'DELETE'
             }).then(function (response) {
             return response;
         })
     }
+
 
 
 }

@@ -140,10 +140,20 @@ class ModuleEditor extends React.Component{
     render(){
 
         return(<div>
+                <nav className="navbar navbar-default">
+                    <div className="container-fluid">
+                        <div className="navbar-header">
+                            <a className="navbar-brand">
+                                <img alt="Courses " className="img-responsive"
+                                     src="https://thumbs.dreamstime.com/s/letter-tg-logo-icon-design-initial-t-g-template-94304958.jpg"/>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
                 <h2>Editing course:{this.state.courseTitle}</h2>
 
                 <div className="row">
-                    <div className="col-4" style={{backgroundColor: "#F5F5F5"}}>
+                    <div className="col-4">
                         <ModuleList courseId={this.state.courseId}/>
                     </div>
 
