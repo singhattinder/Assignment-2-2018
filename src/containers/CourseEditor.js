@@ -21,9 +21,7 @@ export default class CourseEditor extends React.Component {
         this.selectCourse
         (this.props.match.params.courseId);
     }
-
-
-
+    
 
     render(){
 

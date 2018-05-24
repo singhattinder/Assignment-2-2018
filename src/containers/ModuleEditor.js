@@ -4,6 +4,7 @@ import LessonTabs from "./LessonTabs";
 import LessonService from "../services/LessonServices";
 import Tabs from "../components/Tabs";
 import ModuleList from "./ModuleList";
+import CourseService from "../services/CourseServices";
 
 
 
@@ -19,13 +20,16 @@ class ModuleEditor extends React.Component{
         this.findAllLessonsForModule = this.findAllLessonsForModule.bind(this);
         this.deleteLesson = this.deleteLesson.bind(this);
         this.createLesson = this.createLesson.bind(this);
+        this.setCourseTitle = this.setCourseTitle.bind(this);
 
 
         this.lessonService = LessonService.instance;
+        this.courseService = CourseService.instance;
 
 
         this.state = {
             moduleId: '',
+            courseTitle:'',
             courseId: '',
             lesson: {title: 'New Lesson'},
             lessons: [
@@ -43,6 +47,7 @@ class ModuleEditor extends React.Component{
             this.props.match.params.moduleId);
 
         this.findAllLessonsForModule(this.props.match.params.moduleId, this.props.match.params.courseId);
+        this.setCourseTitle(this.props.match.params.courseId);
 
     }
 
@@ -52,6 +57,24 @@ class ModuleEditor extends React.Component{
 
         this.setModuleId(
             newProps.match.params.moduleId);
+
+    }
+
+    setCourseTitle(courseId){
+
+        var t = "course"
+
+
+        let title = Promise.resolve(this.courseService.findCoursesById(courseId))
+            .then(function(response){
+                 t = response.title;
+
+            });
+
+
+
+        this.setState({courseTitle: t}
+        );
 
     }
 
@@ -69,10 +92,13 @@ class ModuleEditor extends React.Component{
 
 
     findAllLessonsForModule(moduleId, courseId){
+
         this.lessonService.findAllLessonsForModule(moduleId, courseId)
             .then((lessons)=>{
                 this.setState({lessons:lessons});
             })
+
+
 
     }
 
@@ -115,7 +141,7 @@ class ModuleEditor extends React.Component{
     render(){
 
         return(<div>
-                <h2>Editing course:{this.state.courseId}</h2>
+                <h2>Editing course:{this.state.courseTitle}</h2>
 
                 <div className="row">
                     <div className="col-4">
